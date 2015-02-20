@@ -1,0 +1,90 @@
+
+<div>
+  <md-content>
+
+    <div id="pageTitle" class="titleBar" layout="row">
+      <h2>Character Summary</h2>
+      <!-- <md-button flex="10" flex-sm="20" class="md-primary" ng-click="showAlert($event)" aria-label="Proficiency Info">
+        <md-icon icon="img/icons/help-white.png" style="width: 24px; height: 24px;"></md-icon>
+      </md-button> -->
+    </div>
+
+    <!-- Message to user -->
+    <div layout-sm="column">
+      <span id="viewMessage" ng-class="{'hide' : isHidden}" ng-model="warningMessage" ng-init="getRace()">
+        <span ng-click="go('/character-details')" ng-model="basicMessage" class="warning" ng-repeat="item in basicMessage">{{item.msg}}</span>
+      </span>
+    </div>
+
+    <div id="characterSummary" ng-model="charSummary" ng-repeat="item in charSummary">
+      <div layout="column" layout-sm="column">
+
+        <div id="basicInfo">
+          <p><strong>{{item.name}}</strong></p>
+          <p><strong>{{item.level}} {{item.race}} {{item.class}}</strong></p>
+        </div>
+
+        <div class="titleBar">
+          <h2>Ability Modifiers</h2>
+        </div>
+
+        <div layout-sm="column">
+          <span id="viewMessage" ng-class="{'hide' : isModMsgHidden}" ng-model="warningMessage" ng-init="getRace()">
+            <span ng-click="go('/ability-scores')" ng-model="abilityScoreMessage" class="warning" ng-repeat="item in abilityScoreMessage">{{item.msg}}</span>
+          </span>
+        </div>
+
+        <div id="modSummary">
+
+          <div class="abilityMod" layout="row">
+            <div flex="50"><p>Strength</p></div>
+            <div class="statMod" flex="50">
+              <p><strong>{{item.strMod}}</strong></p>
+            </div>
+          </div>
+
+          <div class="abilityMod" layout="row">
+            <div flex="50"><p>Dexterity</p></div>
+            <div class="statMod" flex="50">
+              <p><strong>{{item.dexMod}}</strong></p>
+            </div>
+          </div>
+
+          <div class="abilityMod" layout="row">
+            <div flex="50"><p>Constitution</p></div>
+            <div class="statMod" flex="50">
+              <p><strong>{{item.conMod}}</strong></p>
+            </div>
+          </div>
+
+          <div class="abilityMod" layout="row">
+            <div flex="50"><p>Intelligence</p></div>
+            <div class="statMod" flex="50">
+              <p><strong>{{item.intMod}}</strong></p>
+            </div>
+          </div>
+
+          <div class="abilityMod" layout="row">
+            <div flex="50"><p>Wisdom</p></div>
+            <div class="statMod" flex="50">
+              <p><strong>{{item.wisMod}}</strong></p>
+            </div>
+          </div>
+
+          <div class="abilityMod" layout="row">
+            <div flex="50"><p>Charisma</p></div>
+            <div class="statMod" flex="50">
+              <p><strong>{{item.chaMod}}</strong></p>
+            </div>
+          </div>
+        </div>
+        <!-- end of modSummary -->
+        <div id="bottomMenu" ng-controller="AppCtrl" layout="row" layout-sm="column" class="">
+          <md-button ng-click="go('/character-details'); gotoTop()" class="topBtn md-primary" flex="50" flex-sm="100"><span>Edit Details</span></md-button>
+          <md-button ng-click="go('/ability-scores'); gotoTop()" class="md-primary" flex="50" flex-sm="100"><span>Edit Ability Scores</span></md-button>
+        </div>
+      </div>
+
+    </div>
+  </md-content>
+</div>

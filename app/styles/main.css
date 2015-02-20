@@ -1,0 +1,585 @@
+/* Space out content a bit */
+body {
+  height: 100%;
+  display:flex;
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body{
+  font-size:1em;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.heading div{
+  font-weight:600;
+}
+#doc-content{
+    margin:auto;
+}
+
+#view-content{
+  width:960px;
+  box-shadow: 0px 0px 3px 1px #9D9D9D;
+}
+
+#view-content h2{
+  margin: 10px 20px 10px 0px;
+  font-weight: 500;
+}
+
+a:hover{
+  cursor:pointer;
+}
+
+h1{
+  margin:.25em 0;
+}
+.md-padding{
+    padding:0 1em;
+}
+/* Customize container */
+@media (min-width: 600px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  padding:1em;
+  margin-bottom:0;
+  background-color: #ECEFF1;
+}
+
+.jumbotron p{
+  font-weight:500;
+}
+
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+.md-button{
+  padding:10px;
+  margin-right:5px;
+  margin-bottom:5px;
+}
+.titleBar .md-button{
+  margin-bottom:0;
+}
+
+
+/*Stop anchor tags with md-button from overlapping */
+a.md-button{
+  display: inline-block;
+}
+
+/*SideNav Styles */
+.md-sidenav-left, md-sidenav{
+  background:#ECEFF1;
+}
+md-sidenav .md-button{
+  margin:0;
+}
+md-sidenav .md-toolbar-tools{
+  padding-right:0;
+}
+
+md-sidenav .menu-item img{
+  margin-right:10px;
+}
+md-sidenav .menu-item span{
+  vertical-align:bottom;
+}
+
+md-toolbar{
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom Stuff */
+
+#logo{
+  max-width:150px;
+}
+
+/*making the background the lightest version of Blue Grey*/
+/*http://www.google.com/design/spec/style/color.html#color-color-palette*/
+
+md-content.md-default-theme{
+  background:#ECEFF1;
+}
+
+.marketing h2{
+    margin-left:1em!important;
+}
+.done{
+  text-decoration: line-through;
+}
+
+md-icon{
+  margin-top:0px;
+}
+
+.appMenu{
+  padding:10px;
+  margin-right:10px;
+}
+.titleBar{
+  padding: 0 0em 0 1em;
+  color: #FFF;
+  background: #FFA000;
+  text-shadow: 1px 1px 1px rgba(153, 67, 0, 0.73);
+}
+.titleBar h2{
+  margin-right:1em;
+}
+.titleBar .md-button{
+  border-radius:0;
+}
+.closeAppMenu{
+  float:right;
+}
+.closeAppMenu object{
+  width:24px;
+}
+
+.menu-item{
+  width:100%;
+  text-align:left;
+  padding:12px;
+  border-bottom: 1px solid #CFD8DC;
+}
+#profileBtns{
+  margin-left:auto;
+}
+#profileBtns a{
+  padding: .5em;
+  transition:background-color .5s ease;
+  margin-left:.5em;
+}
+
+#profileBtns a:hover{
+  background-color:rgba(150, 150, 150, .2);
+  padding: .5em;
+}
+
+.selectBox select{
+  padding:6px 0 4px 0;
+  border:none;
+  border-bottom:1px solid #ddd;
+}
+
+.selectBox{
+  padding-top:25px;
+}
+
+label{
+  padding:0;
+}
+
+.select-label{
+  position:absolute;
+  top:-25px;
+}
+
+#bottomMenu a.md-button, #bottomMenu .md-button{
+  background-color: #B0BEC5;
+  padding: 1em;
+  margin: 0;
+  color: #37474F;
+  border-radius: 0;
+}
+
+#bottomMenu.row{
+  margin:0;
+}
+#bottomMenu .topBtn{
+  border-right:2px solid #90A4AE;
+}
+
+/*summary page*/
+#basicInfo p{
+  font-size:1.5em;
+}
+
+md-input-container .placeholderLabel{
+  webkit-transform: translate3d(0, 42px, 0) scale(1);
+  transform: translate3d(0, 42px, 0) scale(1);
+  color: rgba(0,0,0,0.5);
+}
+/*Setting up messages and warning dialogue boxes*/
+
+.hide{
+  display:none;
+}
+
+.message{
+  background:#C8E6C9;
+  padding:.5em;
+}
+.warning{
+  background:#E53935;
+  padding:.5em;
+  color:#fff;
+  text-shadow: 1px 1px 2px #000;
+}
+
+
+#viewMessage{
+  color:#263238;
+  width:100%;
+  text-align:center;
+}
+#viewMessage span{
+    width:100%;
+    display:block;
+}
+
+#characterForm{
+  padding: 0em 1em;
+  margin-top:1em;
+}
+
+/*Ability Scores styles*/
+#abilityScores{
+
+  text-align:center;
+}
+#abilityScores .heading{
+  font-weight:500;
+  color:#37474F;
+  padding:1em;
+}
+.abilityRow{
+  padding:1em;
+}
+.abilityRow .title, .abilityRow .modifier{
+  padding-top:8px;
+}
+#abilityScores md-input-container{
+  margin-top: -6px;
+  padding-bottom:0;
+}
+#abilityScores .abilityRow:nth-child(odd), .profStat:nth-child(odd), .abilityMod:nth-child(odd){
+  background:#fff;
+}
+
+#abilityScores md-input-container input{
+  width: 44px;
+  height: 44px;
+  margin: auto;
+  text-align: center;
+  border: 1px solid rgb(255,202,40);
+  background: #FFF8E1;
+}
+
+/*proficiency styles*/
+.disabled{
+  opacity:.5;
+}
+.profStat{
+  padding:1em;
+}
+.profStat p{
+  min-height:2em;
+  margin:0;
+  display:block;
+}
+.profStat div {
+  min-height: 2em;
+  display: block;
+}
+.statMod p{
+  text-align:center;
+}
+
+/*pop-up dialog styles*/
+md-dialog p{
+  line-height:1.5;
+}
+md-dialog md-content{
+  padding:1em;
+}
+md-dialog .md-actions{
+  padding:0;
+
+}
+md-dialog .md-button{
+  margin:0;
+  width: 100%;
+}
+
+/*Summary styles*/
+#basicInfo{
+  padding:0em 1em;
+  border-bottom:1px solid #bbb;
+  margin-top:1em;
+}
+#modSummary{
+  margin-bottom:1em;
+}
+#modSummary .abilityMod{
+  padding:0em 1em;
+}
+
+#modSummary .abilityMod p{
+  margin: .5em 0;
+}
+
+#modSummary .abilityMod:nth-child(even){
+  background:#ECEFF1;
+}
+#modSummary h3{
+  padding-left:1em;
+  margin-top:1em;
+}
+
+/*Toastr styles*/
+#toast-container{
+  margin-bottom:1em;
+}
+
+/*Input styles*/
+
+#loginBtn, #signupBtn{
+  height:3em;
+  margin-top:1em;
+}
+
+#loginBtn.md-button.md-default-theme[disabled], #signupBtn.md-button.md-default-theme[disabled]{
+  background-color: #B0BEC5;
+  color:#fff;
+}
+
+#loginForm, #signupForm{
+    max-width:600px;
+    width: 100%;
+    padding: 1em;
+}
+#loginForm input{
+  border-color: rgba(207, 210, 211, 1);
+  padding-left:2px;
+}
+
+md-input-container [ng-message]{
+  display:none;
+}
+
+md-input-container.md-default-theme.md-input-invalid [ng-message]{
+  display:block;
+}
+
+input:-webkit-autofill {
+    background-color: #fff !important;
+    -webkit-box-shadow: 0 0 0 1000px rgb(236, 239, 241) inset;
+}
+/*bottom button styles*/
+
+.bottomButtons .md-button{
+  border-radius:0;
+  border-top:1px solid rgb(69,90,100);
+  margin:0;
+}
+
+/*Modified the label text tansform so the text doesn't shrink */
+md-input-container.md-input-focused label, md-input-container.md-input-has-value label {
+-webkit-transform: translate3d(0, 4px, 0) scale(1);
+transform: translate3d(0px, 4px, 0) scale(1);
+}
+
+/*Angular Material does not have proper dropdowns yet. Found a link to this code on the github issues page: https://gist.github.com/yarl/b3d4b4114d82c8bb041d */
+
+md-input-container select.md-input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAD1BMVEUAAAB6enp6enp5eXn///+i9s37AAAAA3RSTlMAgIgilleHAAAAIklEQVR4AWOgG2BihgImmAgjhM+IUMOI4CNEGNHMYaKlKwEp5wBLyMAwGAAAAABJRU5ErkJggg==) 99% center no-repeat;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1px;
+}
+
+md-input-container select.md-input, md-input-container input{
+    height:44px;
+}
+
+md-input-container label, .selectBox label{
+  font-weight:500;
+
+}
+
+md-input-container input, md-input-container select{
+  font-size:1.1em;
+  font-weight:600;
+}
+
+.selectBox label{
+  color:rgba(0,0,0,0.54)!important;
+}
+
+md-input-container select.md-input:focus {
+    border-bottom: 2px solid rgb(96, 125, 139) !important;
+    margin-bottom: 0;
+}
+
+md-input-container select.md-input:focus::-ms-value {
+    background: transparent;
+    color: inherit;
+}
+
+md-input-container select.md-input::-ms-expand {
+    display: none;
+}
+
+/*-End of select container styles-*/
+
+/*Needed to remove spinners from number inputs
+code from: http://css-tricks.com/snippets/css/turn-off-number-input-spinners/ */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+.buttondemoBasicUsage {
+/** From vulcanized demo **/ }
+  .buttondemoBasicUsage section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+  .buttondemoBasicUsage md-content {
+  margin-right: 7px; }
+  .buttondemoBasicUsage section .md-button:not(.md-fab) {
+  min-width: 10em; }
+  .buttondemoBasicUsage section .md-button {
+  display: block;
+  margin: 1em;
+  line-height: 25px; }
+  .buttondemoBasicUsage .label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  color: #ccc;
+  font-size: 14px; }
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 600px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+  .jumbotron h1, .jumbotron .h1 {
+    font-size: 63px;
+  }
+  .closeAppMenu{
+    margin-right:1em;
+  }
+}
+@media screen and (max-width: 1024px) {
+  #view-content{
+    width:100%;
+    box-shadow:none;
+  }
+  #doc-content{
+      overflow:hidden;
+  }
+}
+@media screen and (max-width: 600px) {
+  #logo{
+    width:150px;
+    max-width:100%;
+  }
+  a.md-button{
+    max-width:100%;
+    width:100%;
+    display:block;
+  }
+  #doc-content{
+      width:100%;
+  }
+  #doc-content > .ng-scope{
+    width:100%;
+  }
+  .abilityRow .title{
+    text-align:left;
+  }
+  #mainMenu, md-toolbar{
+    height: 44px;
+    min-height: 44px;
+  }
+  #mainMenu .md-toolbar-tools{
+    padding-left:0;
+  }
+  .md-toolbar-tools .md-button{
+    border-radius:0;
+    margin:0;
+  }
+  #mainMenu .md-toolbar-tools .md-button{
+    margin-right:1em;
+  }
+  .profStat{
+    line-height: 2em;
+    min-height:70px;
+  }
+  #bottomMenu .topBtn{
+    border-bottom:2px solid #90A4AE;
+    border-right:none;
+  }
+
+}

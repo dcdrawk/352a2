@@ -1,0 +1,14 @@
+<p>This is the contact view test.</p>
+
+<?php
+
+$file = 'filetest.txt';
+// Open connection to the $file
+if($handle = fopen($file, 'w')) {
+  // Close connection
+  fclose($handle);
+} else {
+  echo "Could not open file for writing.";
+}
+
+?>

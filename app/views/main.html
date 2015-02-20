@@ -1,0 +1,15 @@
+<div id="pageTitle" class="titleBar" layout="row">
+  <h2>Home</h2>
+</div>
+<div class="jumbotron">
+  <img id="logo" src="img/logo.png">
+  <h1>ScrollBinder</h1>
+  <p class="lead">A DnD Character Planner</p>
+</div>
+
+<div id="bottomMenu" class="row">
+  <div layout="row" layout-sm="column">
+    <md-button ng-controller="AppCtrl" ng-click="toggleLeft()" class="topBtn md-primary" flex flex-sm="100"><span>Menu</span></md-button>
+    <md-button ng-controller="AppCtrl" ng-click="go('/character-details')" class="md-primary" flex flex-sm="100"><span>Character Details</span></md-button>
+  </div>
+</div>

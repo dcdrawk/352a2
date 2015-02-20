@@ -1,0 +1,43 @@
+<md-content>
+  <div id="pageTitle" class="titleBar" layout="row">
+      <h2>Proficiency</h2>
+      <md-button flex="10" flex-sm="20" class="md-primary" ng-click="showAlert($event)" aria-label="Proficiency Info">
+        <md-icon icon="img/icons/help-white.png" style="width: 24px; height: 24px;"></md-icon>
+      </md-button>
+  </div>
+
+  <!-- Message to user -->
+  <div layout-sm="column">
+    <span id="viewMessage" ng-class="{'hide' : isHidden}" ng-model="warningMessage" ng-init="getRace()">
+      <span ng-click="go('/character-details')" ng-model="warningMessage" ng-class="{'warning' : isWarning}" ng-repeat="item in warningMessage">{{item.msg1}}<strong>{{item.bold}}</strong>{{item.msg2}}</span>
+      <span ng-model="detectClass"  ng-class="{'message' : isMessage}" ng-repeat="item2 in detectClass">{{item2.msg1}}<strong>{{item2.bold}}</strong></span>
+    </span>
+  </div>
+
+  <section id="profTable" ng-controller="ProfCtrl" ng-class="{'disabled' : isDisabled}">
+
+    <div class="profStat" layout="row" layout-sm="column" ng-class="{'disabled' : bonusDisabled}" ng-model="profBonus">
+      <div flex="25" flex-md="30" flex-sm="100"><p>Proficiency Bonus:</p></div><div flex="75" flex-md="70" flex-sm="100"><p><strong>+{{profBonus}}</strong></p></div>
+    </div>
+
+    <div class="profStat" layout="row" layout-sm="column" ng-class="{'disabled' : equipmentDisabled}" ng-model="armorProf">
+      <div flex="25" flex-md="30" flex-sm="100"><p>Armor:</p></div><div flex="75" flex-md="70" flex-sm="100"><p><strong>{{armorProf}}</strong></p></div>
+    </div>
+
+    <div class="profStat" layout="row" layout-sm="column" ng-class="{'disabled' : equipmentDisabled}" ng-model="weapProf">
+      <div flex="25" flex-md="30" flex-sm="100"><p>Weapons:</p></div><div flex="75" flex-md="70" flex-sm="100"><p><strong>{{weapProf}}</strong></p></div>
+    </div>
+
+    <div class="profStat" layout="row" layout-sm="column" ng-class="{'disabled' : equipmentDisabled}" ng-model="toolProf">
+      <div flex="25" flex-md="30" flex-sm="100"><p>Tools:</p></div><div flex="75" flex-md="70" flex-sm="100"><strong><p>{{toolProf}}</strong></p></div>
+    </div>
+
+    <div class="profStat" layout="row" layout-sm="column" ng-class="{'disabled' : equipmentDisabled}" ng-model="savingThrows">
+      <div flex="25" flex-md="30" flex-sm="100"><p>Saving Throws:</p></div><div flex="75" flex-md="70" flex-sm="100"><strong><p>{{savingThrows}}</strong></p></div>
+    </div>
+
+    <div class="profStat" layout="row" layout-sm="column" ng-class="{'disabled' : equipmentDisabled}" ng-model="skillsProf">
+      <div flex="25" flex-md="30" flex-sm="100"><p>Skills:</p></div><div flex="75" flex-md="70" flex-sm="100"><strong><p>{{skillsProf}}</strong></p></div>
+    </div>
+  </section>
+</md-content>
