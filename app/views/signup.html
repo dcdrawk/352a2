@@ -7,16 +7,18 @@
     <form id="signupForm" flex="100" layout="column" name="registration" class="form-horizontal" role="form">
       <md-input-container flex="100">
         <label class="placeholderLabel">Username</label>
-        <input type="text" name="username" ng-model="signup.username" autocomplete="off" required>
-        <div ng-messages="registration.name.$error">
+        <input type="text" name="username" ng-model="signup.username" ng-pattern="/^[a-zA-Z0-9@.]*$/" autocomplete="off" required>
+        <div ng-messages="registration.username.$error">
           <div ng-message="required">Username is required</div>
+          <div ng-message="pattern">Must only contain letters, numbers, '@', and '.'</div>
         </div>
       </md-input-container>
 
       <md-input-container flex="100">
         <label class="placeholderLabel">Email</label>
-        <input type="email" name="email" ng-model="signup.email" autocomplete="off" required>
+        <input type="email" name="email" ng-model="signup.email" ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+.[a-z0-9-]/" autocomplete="off" required>
         <div ng-messages="registration.email.$error">
+          <div ng-message="required">Email is required</div>
           <div ng-message="email">Invalid Email</div>
         </div>
       </md-input-container>
@@ -26,7 +28,7 @@
         <input type="password" name="password" ng-model="signup.password" minlength="5" required>
         <div ng-messages="registration.password.$error">
           <div ng-message="minlength">Must be at least 5 characters</div>
-
+          <div ng-message="required">Password is required</div>
         </div>
       </md-input-container>
 
@@ -37,9 +39,13 @@
         <div ng-messages="registration.password2.$error">
           <div ng-message="passwordNoMatch">Passwords do not match</div>
         </div>
-
       </md-input-container>
 
+      <md-input-container flex="100">
+        <select id="userExp" class="md-input" ng-model="signup.experience" ng-options="item for item in userExp track by item" ng-change="setUserExp()">
+
+        </select>
+      </md-input-container>
       <md-button id="signupBtn" class="md-raised md-primary" type="submit" ng-click="signUp(signup)" flex="50"><span>Register User</span></md-button>
     </form>
 

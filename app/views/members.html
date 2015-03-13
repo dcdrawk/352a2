@@ -1,0 +1,36 @@
+<div id="pageTitle" class="titleBar" layout="row">
+  <h2>Members</h2>
+</div>
+
+<section id="profileInfo" class="md-padding">
+  <div ng-controller="AppCtrl">
+    <table>
+      <tr>
+        <th><a ng-click="reverse=!reverse;order('1', reverse)">Username</a></th>
+        <th><a ng-click="reverse=!reverse;order('2', reverse)">Email</a></th>
+        <th><a ng-click="reverse=!reverse;order('3', reverse)">Experience</a></th>
+      </tr>
+
+      <!-- repeats for every line in the memberArray -->
+      <div>
+        <tr ng-repeat="item in memberArray">
+          <!-- username -->
+          <td>
+            <a ng-click="getMessages(memberArray[$index][0],memberArray[$index][1]); go('/member-details')">
+              {{memberArray[$index][1]}}
+            </a>
+          </td>
+          <!-- email -->
+          <td>{{memberArray[$index][2]}}</td>
+          <!-- experience -->
+          <td>{{memberArray[$index][3]}}</td>
+        </tr>
+      </div>
+    </table>
+    <!-- <div id="memberList" ng-repeat="item in memberArray">
+      <div flex="33"
+      <strong>msgID</strong>: {{test[$index][0]}} | <strong>Message:</strong> {{test[$index][2]}}
+    </div> -->
+
+  </div>
+</section>

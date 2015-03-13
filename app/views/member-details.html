@@ -1,0 +1,24 @@
+<!-- page title -->
+<div id="pageTitle" class="titleBar" layout="row">
+  <h2><a ng-click="go('members')">Members</a> > {{selectedUserName}}</h2>
+</div>
+
+<!-- Adventure Log -->
+<section id="profileInfo" class="md-padding" ng-init="getMessages(selectedUID, selectedUserName)">
+  <h3>Adventure Log:</h3>
+  <!-- Adventure Log Entries -->
+  <div layout="column" ng-repeat="item in messageArray">
+    <div class="prevEntry">
+
+      <div class="msgTitle" flex="100">
+        <strong>{{messageArray[$index][2]}}</strong> <span class="msgTime">- {{messageArray[$index][4]}}</span>
+      </div>
+
+      <div class="msgContent angular-with-newlines" flex="100">
+        {{messageArray[$index][3]}}
+      </div>
+
+    </div>
+  </div>
+
+</section>

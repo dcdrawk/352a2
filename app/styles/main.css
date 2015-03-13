@@ -41,11 +41,13 @@ html, body{
 }
 #doc-content{
     margin:auto;
+    overflow:hidden;
 }
 
 #view-content{
   width:960px;
   box-shadow: 0px 0px 3px 1px #9D9D9D;
+  margin-bottom: 1em;
 }
 
 #view-content h2{
@@ -400,6 +402,21 @@ md-dialog .md-button{
   border-color: rgba(207, 210, 211, 1);
   padding-left:2px;
 }
+#profileInfo p{
+  margin-bottom:0;
+}
+
+#profileInfo strong{
+  font-size:1.1em;
+}
+
+.prevEntry{
+  margin-top:1em;
+}
+.angular-with-newlines {
+  white-space: pre-line;
+  margin-top: -1em;
+}
 
 md-input-container [ng-message]{
   display:none;
@@ -412,6 +429,20 @@ md-input-container.md-default-theme.md-input-invalid [ng-message]{
 input:-webkit-autofill {
     background-color: #fff !important;
     -webkit-box-shadow: 0 0 0 1000px rgb(236, 239, 241) inset;
+}
+
+.editInput{
+    display:inline-block!important;
+
+}
+
+.editBtn{
+  align-self: center!important;
+  height:3em!important;
+  margin-left:1em;
+}
+.addEntry{
+  margin-top:1em;
 }
 /*bottom button styles*/
 
@@ -481,8 +512,49 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-
-
+/* members page styles */
+#profileInfo table{
+  width:100%;
+  margin-top:1em;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor:default;
+  margin-bottom:1em;
+}
+#profileInfo table th{
+  width:33.33%;
+  text-align:left;
+  padding-bottom:1em;
+}
+#profileInfo a{
+    text-decoration:underline;
+}
+.msgTitle, .msgTime, .msgContent{
+  margin-bottom:.5em;
+}
+.msgTime{
+  opacity:.7;
+}
+#newMsg label{
+  padding-left:1em;
+}
+#newMsg input, #newMsg textarea {
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.31);
+  padding-left: 1em;
+  margin-top: .5em;
+}
+#newMsg textarea {
+    min-height:200px!important;
+    padding:1em;
+}
+#newMsg h3{
+  margin-bottom:0;
+  margin-left:1em;
+}
 .buttondemoBasicUsage {
 /** From vulcanized demo **/ }
   .buttondemoBasicUsage section {
@@ -549,6 +621,9 @@ input[type=number]::-webkit-outer-spin-button {
     max-width:100%;
     width:100%;
     display:block;
+  }
+  #view-content{
+    margin-bottom: 0em;
   }
   #doc-content{
       width:100%;

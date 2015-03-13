@@ -1,0 +1,56 @@
+<div id="pageTitle" class="titleBar" layout="row">
+  <h2>My Adventure Log</h2>
+</div>
+
+<section id="profileInfo" class="md-padding">
+
+  <md-button class="md-raised md-primary addEntry" ng-class="{'hide' : createMsg == true}" type="submit" ng-click="createMessage()"><span>Add New Entry</span></md-button>
+  <form id="newMsg" name="newEntry" ng-class="{'hide' : createMsg == false}" >
+    <h3>New Message</h3>
+    <md-input-container>
+      <label class="placeholderLabel">Title</label>
+      <input type="text" name="title" ng-model="newMessage.title" md-maxlength="50">
+      <div ng-show="form.email.$dirty" ng-messages="newEntry.title.$error">
+        <div ng-message="required">Epic sounding title required!</div>
+        <div ng-message="md-maxlength">Title is too long!</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container>
+      <label class="placeholderLabel">Adventure Notes</label>
+      <textarea name="message" ng-model="newMessage.message" md-maxlength="500"></textarea>
+      <div ng-messages="newEntry.message.$error">
+        <div ng-message="required">You need to describe your heroic deeds!</div>
+        <div ng-message="md-maxlength">Entry is too long! (max 500)</div>
+      </div>
+    </md-input-container>
+
+    <md-button class="md-raised md-primary" type="submit" ng-click="postMessage(newMessage)"><span>Post Entry</span></md-button>
+    <md-button class="md-raised" type="submit" ng-click="cancelMessage()"><span>Cancel</span></md-button>
+  </form>
+
+  <div layout="column" ng-repeat="item in test">
+    <div class="prevEntry">
+
+      <div class="msgTitle" flex="100">
+        <strong>{{test[$index][2]}}</strong> <span class="msgTime">- {{test[$index][4]}}</span>
+      </div>
+
+      <!-- <div class="msgTime" flex="100">
+
+      </div> -->
+
+      <div class="msgContent angular-with-newlines" flex="100">
+        {{test[$index][3]}}
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- <md-input-container>
+    <input class="" type="text" name="uid" value="{{uid}}" ng-model="newMessage.uid">
+  </md-input-container> -->
+
+
+</section>

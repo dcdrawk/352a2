@@ -52,6 +52,26 @@ class DbHandler {
             return NULL;
         }
     }
+
+    public function updateTable($table_name, $column_name, $value, $uid) {
+      //$c = (array) $obj;
+      //$keys = array_keys($c);
+      //$columns = '';
+      //$values = '';
+      // foreach($column_names as $desired_key){ // Check the obj received. If blank insert blank into the array.
+      //    if(!in_array($desired_key, $keys)) {
+      //         $$desired_key = '';
+      //     }else{
+      //         $$desired_key = $c[$desired_key];
+      //     }
+      //     $columns = $columns.$desired_key.',';
+      //     $values = $values."'".$$desired_key."',";
+      // }
+      $query = "UPDATE ".$table_name." SET ".$column_name."= '$value' WHERE uid='$uid'";
+      //$query = "INSERT INTO ".$table_name." (".trim($columns,',').") VALUES(".trim($values,',').")";
+      $r = $this->conn->query($query) or die($this->conn->error.__LINE__);
+
+    }
 public function getSession(){
     if (!isset($_SESSION)) {
         session_start();
@@ -62,12 +82,14 @@ public function getSession(){
         $sess["uid"] = $_SESSION['uid'];
         $sess["name"] = $_SESSION['username'];
         $sess["email"] = $_SESSION['email'];
+        $sess["experience"] = $_SESSION['experience'];
     }
     else
     {
         $sess["uid"] = '';
         $sess["name"] = 'Guest';
         $sess["email"] = '';
+        $sess["experience"] = '';
     }
     return $sess;
 }

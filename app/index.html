@@ -5,29 +5,20 @@
     <title>ScrollBinder</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" /> -->
-    <!-- <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" /> -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- Style sheets -->
     <link rel="stylesheet" href="styles/angular-material.css">
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/angular-toastr.css">
+
     <!-- Roboto fonts: Normal(400), Medium(500), Bold(700) -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
-    <!-- endbuild -->
-
-
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
   </head>
+
   <body ng-app="myappApp" layout="row" layout-fill role="main">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
     <div ng-controller="AppCtrl" layout="column" layout-fill>
-    <!-- Add your site or application content here -->
+
+      <!-- Main Toolbar -->
       <md-toolbar id="mainMenu" class="md-primary">
         <div class="md-toolbar-tools">
           <md-button class="md-primary appMenu" ng-click="toggleLeft()" aria-label="Menu">
@@ -35,11 +26,12 @@
           </md-button>
           <span class="md-flex">ScrollBinder</span>
           <div id="profileBtns" ng-controller="authCtrl">
-            <p><a ng-click="logout()">Log Out</a></p>
+            <p ng-controller="AppCtrl" ng-class="{'hide' : isLogged == false}" ><a ng-click="logout()">Log Out</a></p>
           </div>
         </div>
-
       </md-toolbar>
+
+      <!-- Left Navigation -->
       <section layout="row" flex>
         <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-open="false" md-component-id="left">
           <md-toolbar>
@@ -47,20 +39,20 @@
               <span flex="85" class="md-flex">Menu</span>
 
               <md-button flex="15" class="md-primary closeAppMenu" ng-click="toggleLeft()" aria-label="Close Menu">
-                <!-- <md-icon icon="img/icons/ic_clear_white_24dp.png" style="width: 24px; height: 24px;"></md-icon> -->
-                <!-- <md-icon></md-icon> -->
                 <img  style="width: 24px; height: 24px;" src="img/icons/ic_clear_white_24dp.png">
               </md-button>
 
             </div>
-
           </md-toolbar>
+
+          <!-- Navigation Links -->
           <md-content ng-controller="LeftCtrl">
 
             <md-button ng-click="go('/')" class="md-padding md-primary menu-item">
               Home
             </md-button>
 
+            <!-- Login/Signup buttons will hide if user is logged in-->
             <md-button ng-click="go('/login')" ng-class="{'hide' : isLoggedIn}" class="md-padding md-primary menu-item">
               Login
             </md-button>
@@ -69,28 +61,40 @@
               Sign Up
             </md-button>
 
+            <!-- Profile button will hide if user is logged out-->
             <md-button ng-click="go('/profile')" ng-class="{'hide' : isLoggedIn == false}" class="md-padding md-primary menu-item">
               Profile
             </md-button>
 
-            <md-button ng-click=" gotoTop(); go('/character-details')" ng-disabled="!isLoggedIn" class="md-padding md-primary menu-item">
+            <!-- Adventure Log will hide if user is logged out-->
+            <md-button ng-click="go('/adventure-log')" ng-class="{'hide' : isLoggedIn == false}" class="md-padding md-primary menu-item">
+              Adventure Log
+            </md-button>
+
+            <md-button ng-click="gotoTop(); go('/members')" class="md-padding md-primary menu-item">
+              Members
+            </md-button>
+
+            <md-button ng-click="gotoTop(); go('/character-details')" class="md-padding md-primary menu-item">
               Character Details
             </md-button>
 
-            <md-button ng-click="gotoTop(); go('/proficiency')" ng-disabled="!isLoggedIn" class="md-padding md-primary menu-item">
+            <md-button ng-click="gotoTop(); go('/proficiency')" class="md-padding md-primary menu-item">
               Proficiency
             </md-button>
 
-            <md-button ng-click="gotoTop(); go('/ability-scores')" ng-disabled="!isLoggedIn" class="md-padding md-primary menu-item">
+            <md-button ng-click="gotoTop(); go('/ability-scores')" class="md-padding md-primary menu-item">
               Ability Scores
             </md-button>
 
-            <md-button ng-click="go('/character-summary')" ng-disabled="!isLoggedIn" class="md-padding md-primary menu-item">
+            <md-button ng-click="go('/character-summary')" class="md-padding md-primary menu-item">
               Character Summary
             </md-button>
-
           </md-content>
         </md-sidenav>
+        <!-- /Navigation Links -->
+
+        <!-- View content-->
         <md-content flex>
           <div id="doc-content" layout="column" layout-fill layout-align="center center">
 
@@ -99,50 +103,31 @@
 
           </div>
         </md-content>
+        <!-- /View content-->
+
       </section>
     </div>
 
-
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <![endif]-->
-    <!-- endbuild -->
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <!-- // <script src="bower_components/jquery/dist/jquery.js"></script>
-    // <script src="bower_components/angular/angular.js"></script>
-    // <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
-    <!-- // <script src="bower_components/angular-animate/angular-animate.js"></script>
-    // <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    // <script src="bower_components/angular-messages/angular-messages.js"></script>
-    // <script src="bower_components/angular-route/angular-route.js"></script>
-    // <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    // <script src="bower_components/angular-touch/angular-touch.js"></script>
-    // <script src="bower_components/angular-aria/angular-aria.js"></script>
-    // <script src="bower_components/hammerjs/hammer.js"></script>
-    // <script src="bower_components/angular-material/angular-material.js"></script>
-    // <script src="bower_components/angular-material-icons/angular-material-icons.js"></script> -->
-    <!-- endbower -->
-    <!-- endbuild -->
+    <!-- I took all of my Angular components and minified them into one file: -->
     <script src="scripts/libs/angular-components.min.js"></script>
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/details.js"></script>
-        <script src="scripts/controllers/proficiency.js"></script>
-        <script src="scripts/controllers/ability-scores.js"></script>
-        <script src="scripts/controllers/to-do.js"></script>
-        <script src="scripts/controllers/summary.js"></script>
-        <script src="scripts/controllers/authCtrl.js"></script>
-        <!-- endbuild -->
+    <script src="scripts/libs/angular-toastr.tpls.js"></script>
 
-        <script src="scripts/data/data.js"></script>
-        <script src="scripts/data/directives.js"></script>
-        <script src="scripts/libs/angular-toastr.tpls.js"></script>
-        <script src="scripts/libs/toastr-config.js"></script>
+    <!-- The rest of the app/controller: -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/details.js"></script>
+    <script src="scripts/controllers/proficiency.js"></script>
+    <script src="scripts/controllers/ability-scores.js"></script>
+    <script src="scripts/controllers/summary.js"></script>
+    <script src="scripts/controllers/authCtrl.js"></script>
+    <script src="scripts/controllers/members.js"></script>
+
+    <!-- These scripts are from a online tutorial I followed: http://www.angularcode.com/user-authentication-using-angularjs-php-mysql/ -->
+    <script src="scripts/data/data.js"></script>
+    <script src="scripts/data/directives.js"></script>
+
+    <!-- Config file for the toasts that appear at the bottom of the screen: -->
+    <script src="scripts/libs/toastr-config.js"></script>
 
 
 </body>

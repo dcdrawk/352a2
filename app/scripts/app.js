@@ -46,10 +46,6 @@ app.config(function($mdThemingProvider) {
         templateUrl: 'views/ability-scores.html',
         controller: 'AScoreCtrl'
       })
-      .when('/to-do', {
-        templateUrl: 'views/to-do.html',
-        controller: 'ToDoCtrl'
-      })
       .when('/character-summary', {
         templateUrl: 'views/character-summary.html',
         controller: 'SummaryCtrl'
@@ -66,11 +62,24 @@ app.config(function($mdThemingProvider) {
         templateUrl: 'views/profile.html',
         controller: 'authCtrl'
       })
+      .when('/adventure-log', {
+        templateUrl: 'views/adventure-log.html',
+        controller: 'authCtrl'
+      })
+      .when('/members', {
+        templateUrl: 'views/members.html',
+        controller: 'MemberCtrl'
+      })
+      .when('/member-details', {
+        templateUrl: 'views/member-details.html',
+        controller: 'MemberCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
 
   })
+  //this function will run when the page is loaded
   .run(function ($rootScope, $location, Data) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         $rootScope.authenticated = false;
@@ -80,45 +89,97 @@ app.config(function($mdThemingProvider) {
                 $rootScope.uid = results.uid;
                 $rootScope.name = results.name;
                 $rootScope.email = results.email;
-            } else {
-                var nextUrl = next.$$route.originalPath;
-                if (nextUrl == '/' || nextUrl == '/signup' || nextUrl == '/login') {
-
-                } else {
-                    $location.path("/login");
-                }
             }
         });
     });
   })
-  .controller('TestCtrl', function($scope) {
-    $scope.title1 = 'Button';
-    $scope.title4 = 'Warn';
-    $scope.isDisabled = true;
-    $scope.googleUrl = 'http://google.com';
-  })
-  .controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log, $location, $anchorScroll, Data) {
+  // //Old Controller
+  // .controller('ProfileCtrl', function($scope) {
+  //   $scope.title4 = 'Warn';
+  //   $scope.isDisabled = true;
+  //   $scope.googleUrl = 'http://google.com';
+  // })
+
+  .controller('AppCtrl', function($scope, $rootScope, $window, $timeout, $mdSidenav, $log, $location, $anchorScroll, Data, toastr) {
+    $scope.editingEmail = false;
+
+    Data.get('session').then(function (results) {
+      if (results.uid) {
+        $scope.myEmail = results.email;
+        $scope.userExperience = results.experience;
+      }
+    });
+
+    //this function will force the browser to use HTTPS
+    //code from: http://stackoverflow.com/questions/22689543/forcing-a-specific-page-to-use-https-with-angularjs
+    $rootScope.forceSSL = function () {
+         if ($location.protocol() != 'https')
+             $window.location.href = $location.absUrl().replace('http', 'https');
+   }
+
+     //If I wanted to switch back to HTTP, but it causes the whole page to refresh
+     $rootScope.forceHTTP = function () {
+          if ($location.protocol() != 'http')
+              $window.location.href = $location.absUrl().replace('https', 'http');
+    }
+
+      //call the function when the app runs
+      $rootScope.forceSSL();
+
+    //function to toggle the left navigation
     $scope.toggleLeft = function() {
       $mdSidenav('left').toggle()
-      // .then(function(){
-      //   $log.debug('toggle left is done');
-      // });
+
+      //check to see if the user is logged in, will change what options are shown in the menu
       Data.get('session').then(function (results) {
         if (results.uid) {
           $scope.isLoggedIn = true;
-          $log.debug($scope.isLoggedOut);
         } else {
           $scope.isLoggedIn = false;
-          $log.debug($scope.isLoggedOut);
         }
       });
     };
+
+    //changes the location path/page of the app
     $scope.go = function ( path ) {
       $location.path( path );
       $mdSidenav('left').close();
     };
 
+    //When user is editing the email
+    $scope.editEmail = function (){
+      $scope.editingEmail = true;
+    }
+
+    //User cancles the action
+    $scope.cancel = function (){
+      $scope.editingEmail = false;
+    }
+
+    //User confirms the edit to email
+    $scope.newEmail = {email:''}
+    $scope.confirmEmail = function (userName) {
+        Data.post('updateEmail', {
+          userName: userName
+        }).then(function (results) {
+            if (results.status == "success") {
+              toastr.clear();
+              toastr.success(results.message);
+              Data.get('session').then(function (results) {
+                $log.debug(results.email);
+                //$scope.newEmail = {email:results.email};
+                $scope.myEmail = results.email;
+                $scope.editingEmail = false;
+              });
+            } else {
+              toastr.clear();
+              toastr.error(results.message);
+            }
+        });
+    };
   })
+
+  //Controller for the left nav
   .controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log, $location, $anchorScroll) {
     $scope.close = function() {
       $mdSidenav('left').close()

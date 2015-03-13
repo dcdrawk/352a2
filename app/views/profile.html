@@ -1,21 +1,33 @@
+<!-- page title -->
 <div id="pageTitle" class="titleBar" layout="row">
   <h2>{{name}}'s Profile</h2>
 </div>
 
+<!-- Profile info -->
 <section id="profileInfo" class="md-padding">
-  <p>User ID - <strong>{{uid}}</strong></p>
-  <p>Email - <strong>{{email}}</strong></p>
-  <h3>Messages:</h3>
-  <div ng-repeat="item in test">
-    <strong>msgID</strong>: {{test[$index][0]}} | <strong>Message:</strong> {{test[$index][2]}}
+  <div ng-controller="AppCtrl">
+    <form id="profileInfo" name="profileInfo">
+      <p>User ID - <strong>{{uid}}</strong></p>
+      <!-- hide original email while editing -->
+      <div ng-class="{'hide' : editingEmail == true}">
+        <md-input-container layout="row" ng-class="{'hide' : editingEmail == true}" flex="100">
+          <p>Email - <strong>{{myEmail}}</strong>
+            <md-button class="editBtn md-raised" type="submit" ng-click="editEmail()"><span>Edit</span></md-button>
+          </p>
+        </md-input-container>
+      </div>
+      <md-input-container layout="row" ng-class="{'hide' : editingEmail == false}" flex="100">
+        <p>Email -
+          <input class="editInput"  placeholder="{{email}}" type="email" name="email" ng-model="newEmail.email"  ng-pattern="/^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+.[a-z0-9-]/" autocomplete="off">
+          <md-button class="editBtn md-raised md-primary" ng-click="confirmEmail(newEmail)"><span>Confirm</span></md-button>
+          <md-button class="editBtn md-raised" ng-click="cancel()"><span>Cancel</span></md-button>
+        </p>
+      </md-input-container>
+
+      <p>User experience - <strong>{{userExperience}}</strong></p>
+    </form>
   </div>
-  <md-input-container>
-    <label class="placeholderLabel">Add Message:</label>
-    <input type="textarea" name="message" ng-model="newMessage.message" required>
-  </md-input-container>
-  <!-- <md-input-container>
-    <input class="" type="text" name="uid" value="{{uid}}" ng-model="newMessage.uid">
-  </md-input-container> -->
-  <md-button class="md-raised md-primary" type="submit" ng-click="postMessage(newMessage)" flex="50"><span>Post Message</span></md-button>
+
+  <md-button class="md-raised md-primary" type="submit" ng-click="go('adventure-log')" flex="50"><span>View Adventure Log</span></md-button>
 
 </section>

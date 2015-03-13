@@ -1,7 +1,0 @@
-Jim | Smith | jsmith90@example.com | Beginner
-Jane | Doe | jdoe33@example.com | Expert
-Homer | Simpson | doh@example.com | Expert
-Hank | Hill | propane@example.com | Intermediate
-Rick | Sanchez  | wubalub@example.com | Expert
-Frank | Grimes | grimy@example.com | Beginner
-Jimbo | Jones | jimbo@example.com | Intermediate
