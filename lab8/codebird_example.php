@@ -1,4 +1,22 @@
 <?php
+/**
+ * Database configuration
+ */
+define('DB_USERNAME', 'djc6');
+define('DB_PASSWORD', 'djc6');
+define('DB_HOST', 'localhost');
+// define('DB_NAME', 'angularcode');
+define('DB_NAME', 'djc6');
+
+$db = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+        // Check for database connection error
+        if (mysqli_connect_errno()) {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        }
+?>
+
+<?php
 	// Require codebird
 	require_once('codebird-php/src/codebird.php');
 	// Require authentication parameters
@@ -102,7 +120,31 @@ session_start();
     }
 
     // assign access token on each page load
-    $cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-    //$reply = $cb->statuses_update('status=Whohoo, I just tweeted!');
-    echo ('WUT');
-    ?>
+    //$cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+
+  //  echo ('WUT');
+//$query    = 'SELECT email FROM users WHERE uid = 1';
+//$query = "UPDATE ".$table_name." SET ".$column_name."= '$value' WHERE uid='$uid'";
+$query = "UPDATE users SET twitter_token = '".$_SESSION['oauth_token']."', twitter_secret = '".$_SESSION['oauth_token_secret']."' WHERE uid='1'";
+//$query = "UPDATE users SET twitter_token = ".$_SESSION['oauth_token']." AND SET twitter_secret = ".$_SESSION['oauth_token_secret']." WHERE uid='1'";
+$result = $db->query($query);
+
+//$test = $result->fetch_assoc();
+//echo implode($test);
+//if (!$result) {
+//    throw new Exception("Database Error [{$db->database->errno}] {$db->database->error}");
+//}
+
+if(isset($_SESSION['oauth_token']) && isset($_SESSION['oauth_token_secret'])){
+	echo('you are signed into twitter!');
+}
+$query2 = 'SELECT twitter_token, twitter_secret FROM users WHERE uid = 1';
+$result2 = $db->query($query2);
+$twitter_keys = $result2->fetch_assoc();
+
+echo ($twitter_keys['twitter_token']);
+$cb->setToken($twitter_keys['twitter_token'], $twitter_keys['twitter_secret']);
+$reply = $cb->statuses_update('status=I just tweeted through my DB again!');
+
+
+?>
