@@ -28,6 +28,10 @@ app.config(function($mdThemingProvider) {
     'default': '600' // use shade 400 for default, and keep all other shades the same
   });
 })
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }]);
   app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -59,7 +63,7 @@ app.config(function($mdThemingProvider) {
         controller: 'authCtrl'
       })
       .when('/profile', {
-        templateUrl: 'views/profile.html',
+        templateUrl: 'views/profile.php',
         controller: 'authCtrl'
       })
       .when('/adventure-log', {
@@ -72,6 +76,10 @@ app.config(function($mdThemingProvider) {
       })
       .when('/member-details', {
         templateUrl: 'views/member-details.html',
+        controller: 'MemberCtrl'
+      })
+        .when('/twitter-connect', {
+        templateUrl: 'views/twitter-connect.php',
         controller: 'MemberCtrl'
       })
       .otherwise({

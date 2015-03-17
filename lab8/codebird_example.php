@@ -1,6 +1,7 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <?php
 	// Require codebird
-	require_once('codebird-php/src/codebird.php');
+    require_once('codebird-php/src/codebird.php');
 	// Require authentication parameters
 	require_once('twitter_config.php');
 ////	
@@ -104,5 +105,17 @@ session_start();
     // assign access token on each page load
     $cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
     //$reply = $cb->statuses_update('status=Whohoo, I just tweeted!');
-    echo ('WUT');
+    
+    $db = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    //$reply = $cb->statuses_user_timeline();
+    $reply = $cb->statuses_homeTimeline();
+    foreach ($reply as $test){
+        if(!is_null($test)){            
+            //print_r($test);
+        } 
+        //echo('<p>'.$test->text.'</p>'); 
+    }
+    //print_r($reply);
+   // echo ($reply);
+    //$reply = $cb->statuses_update('status=Whohoo, I just tweeted again!');
     ?>
